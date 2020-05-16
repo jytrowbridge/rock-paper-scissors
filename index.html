@@ -32,15 +32,10 @@
                  : 'tie'
         }
 
-        function isWin(throw1, throw2) {
-            // returns True if throw1 wins, False otherwise
-            if ((throw1 == 'rock' && throw2 == 'scissors')
+        function isWin(throw1, throw2) {  
+            return (throw1 == 'rock' && throw2 == 'scissors')
                 || (throw1 == 'paper' && throw2 == 'rock')
-                || (throw1 == 'scissors' && throw2 == 'paper')) {
-                return true;
-            } else {
-                return false;
-            }                    
+                || (throw1 == 'scissors' && throw2 == 'paper')           
         }
 
         let playOptions = ['rock', 'paper', 'scissors'];
@@ -70,7 +65,7 @@
                 numRounds++;
             }
             if (playerWins == winsNeeded) {
-                console.log(`You win the game ${playerWins} to ${computerWins} in ${numRounds}.`);
+                console.log(`You win the game ${playerWins} to ${computerWins} in ${numRounds} rounds.`);
             } else if (computerWins == winsNeeded) {
                 console.log(`You lose the game ${computerWins} to ${playerWins} in ${numRounds} rounds.`);
             }

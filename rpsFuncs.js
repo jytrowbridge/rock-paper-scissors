@@ -32,28 +32,41 @@ function getRoundResults(playerSelection, computerSelection) {
   : 'tie'
 }
 
-function playRound(playerSelection) {
+const getPlayerBox = () => {return document.querySelector('#player');};
+const getComputerBox = () => {return computerBox = document.querySelector('#computer');};
+const getResultBox = () => {return computerBox = document.querySelector('#result');};
+
+function playRound(playerSelection, game) {
+  // game is instance of Game class
   const computerSelection = computerPlay()
   const result = getRoundResults(playerSelection, computerSelection);
 
-  const playerBox = document.querySelector('#player');
-  const computerBox = document.querySelector('#computer');
+  const playerBox = getPlayerBox();
+  const computerBox = getComputerBox();
 
   playerBox.textContent = playerSelection;
   computerBox.textContent = computerSelection;
-  displayResult(result);
+  displayResult(result, game);
 }
 
-let winsLosses = [0, 0]
-function displayResult(result) {
-  const resultBox = document.querySelector('#result');
+function displayResult(result, game) {
+  // game is instance of Game class
+  const resultBox = getResultBox();
   
-  if (result == 'win') winsLosses[0]++
-  if (result == 'lose') winsLosses[1]++
+  if (result == 'win') game.wins++
+  if (result == 'lose') game.losses++
 
-  const resultText = `You ${toTitleCase(result)}!\n` 
-                   + `Wins: ${winsLosses[0]}\n`
-                   + `Losses: ${winsLosses[1]}`
+  const resultText = game.wins == game.winsNeeded ? 
+                          `You Win The Game!\r\nFinal Score:\r\n` 
+                        + `Wins: ${game.wins}\r\n`
+                        + `Losses: ${game.losses}`
+                   : game.losses == game.winsNeeded ?
+                          `You Lose The Game!\r\nFinal Score:\r\n` 
+                        + `Wins: ${game.wins}\r\n`
+                        + `Losses: ${game.losses}`
+                   :      `You ${toTitleCase(result)} The Round!\r\n` 
+                        + `Wins: ${game.wins}\r\n`
+                        + `Losses: ${game.losses}`
 
   resultBox.textContent = resultText;
 }

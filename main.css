@@ -1,0 +1,41 @@
+html {
+  font-family: sans-serif;
+}
+
+.game-box {
+  /* width: 100%; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: green;;
+}
+
+.game-box > * {
+  padding: 10px;
+  border: 2px solid red;
+}
+
+.game-display {
+  height: 20vh;
+  width: 30vw;
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+
+#player {
+  background-color: white;
+  width: 30%;
+}
+
+#result {
+  background-color: orange;
+  width: 30%;
+}
+
+#computer {
+  background-color: blue;
+  width: 30%;
+}
